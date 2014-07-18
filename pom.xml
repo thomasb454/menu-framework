@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ttaylorr</groupId>
+    <artifactId>menu-framework</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>menu-framework</name>
+    <description>menu-framework is a simple Bukkit framework for making contextual inventory-based menus easy.</description>
+    <url>https://github.com/ttaylorr/menu-framework</url>
+    <inceptionYear>2014</inceptionYear>
+
+    <scm>
+        <connection>scm:git:https://github.com/ttaylorr/menu-framework.git</connection>
+        <url>https://github.com/ttaylorr/menu-framework</url>
+    </scm>
+
+    <properties>
+        <plugin.main>com.ttaylorr.menu.MenuFrameworkPlugin</plugin.main>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>overcast-repo</id>
+            <name>Overcast Network Repo</name>
+            <url>https://repo.oc.tc/content/groups/public</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>tc.oc</groupId>
+            <artifactId>sportbukkit-api</artifactId>
+            <version>1.7.9-R0.3-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>17.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <include>com.google.guava:guava</include>
+                                </includes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>
